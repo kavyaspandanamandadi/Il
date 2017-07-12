@@ -39,7 +39,92 @@ Developer can interact with a single layer, which is identifiable by combination
 •	Layer name (global, shared, Application for example)
 Directory structure
  
- 
+ .
+├── accounts
+│   ├── company-dev
+│   │   ├── application.eu-west-1.tfvars
+│   │   ├── global.tfvars
+│   │   └── shared.eu-west-1.tfvars
+│   ├── company-cicd
+│   │   ├── cicd.eu-west-1.tfvars
+│   │   └── global.tfvars
+│   ├── company-legacy
+│   │   └── legacy.tfvars
+│   ├── company-prod
+│   │   ├── application.eu-west-1.tfvars
+│   │   ├── global.tfvars
+│   │   └── shared.eu-west-1.tfvars
+│   └── company-staging
+│       ├── application.eu-west-1.tfvars
+│       ├── global.tfvars
+│       └── shared.eu-west-1.tfvars
+├── layers
+│   ├── company-dev
+│   │   ├── application
+│   │   │   ├── main.tf
+│   │   │   ├── output.tf
+│   │   │   └── variables.tf
+│   │   ├── global
+│   │   │   ├── main.tf
+│   │   │   ├── output.tf
+│   │   │   └── variables.tf
+│   │   └── shared
+│   │       ├── main.tf
+│   │       ├── output.tf
+│   │       └── variables.tf
+│   ├── company-infra
+│   │   ├── cicd
+│   │   │   ├── iam.tf
+│   │   │   ├── main.tf
+│   │   │   ├── output.tf
+│   │   │   └── variables.tf
+│   │   └── global -> ../../company-dev/global
+│   ├── company-static
+│   │   └── static
+│   │       ├── main.tf
+│   │       ├── output.tf
+│   │       └── variables.tf
+│   ├── company-prod
+│   │   ├── application -> ../../company-staging/application
+│   │   ├── global -> ../../company-staging/global
+│   │   └── shared -> ../../company-staging/shared
+│   └── company-staging
+│       ├── application
+│       │   ├── main.tf
+│       │   ├── output.tf
+│       │   └── variables.tf
+│       ├── global
+│       │   ├── main.tf
+│       │   ├── output.tf
+│       │   └── variables.tf
+│       └── shared
+│           ├── main.tf
+│           ├── output.tf
+│           └── variables.tf
+├── modules
+│   ├── application
+│   │   ├── codedeploy.tf
+│   │   ├── output.tf
+│   │   └── variables.tf
+│   ├── global
+│   │   ├── cloudtrail.tf
+│   │   ├── iam.tf
+│   │   ├── main.tf
+│   │   ├── output.tf
+│   │   └── variables.tf
+│   ├── shared
+│   │   ├── bastion.tf
+│   │   ├── networking.tf
+│   │   ├── output.tf
+│   │   ├── route53.tf
+│   │   ├── variables.tf
+│   │   └── vpc_peering.tf
+│   └── typical_service
+│       ├── codedeploy.tf
+│       ├── output.tf
+│       ├── service.tf
+│       └── variables.tf
+└── terraform.sh
  
  
 Notes:
