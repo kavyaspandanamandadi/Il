@@ -1,0 +1,21 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "1",
+            "Action": [
+                "cognito-identity:GetOpenIdTokenForDeveloperIdentity"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        },
+        {
+            "Sid": "2",
+            "Action": [
+                "kms:Encrypt"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        }
+    ]
+}
