@@ -1,0 +1,37 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "1",
+            "Action": [
+                "sqs:ChangeMessageVisibility",
+                "sqs:DeleteMessage",
+                "sqs:ReceiveMessage"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:sqs:us-east-1:901056905605:pgr-claims-pd-package-ready"
+        },
+        {
+            "Sid": "2",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:s3:::pgr-prod-11-claims-pd-media/*",
+                "arn:aws:s3:::pgr-prod-11-claims-pd-transcoded/*",
+                "arn:aws:s3:::pgr-prod-11-claims-dmg-converted-content/*"
+            ]
+        },
+        {
+            "Sid": "3",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:s3:::pgr-prod-11-claims-pd-media"
+            ]
+        }
+    ]
+}
